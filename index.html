@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Deportes</title>
+  <style>
+    /* Estilos CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px 0;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    section.gallery {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .image-card {
+      width: 200px;
+      margin: 15px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .image-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .image-card p {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    .image-card:hover {
+      transform: scale(1.05);
+    }
+
+    .counter {
+      margin-top: 40px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Galería Interactiva de Deportes</h1>
+    <p>¡Haz clic en los deportes que te gustan y cuenta cuántos has visto!</p>
+  </header>
+
+  <section class="gallery">
+    <div class="image-card" id="soccer">
+      <img src="https://example.com/soccer.jpg" alt="Fútbol" />
+      <p>Fútbol</p>
+    </div>
+    <div class="image-card" id="basketball">
+      <img src="https://example.com/basketball.jpg" alt="Baloncesto" />
+      <p>Baloncesto</p>
+    </div>
+    <div class="image-card" id="tennis">
+      <img src="https://example.com/tennis.jpg" alt="Tenis" />
+      <p>Tenis</p>
+    </div>
+    <div class="image-card" id="baseball">
+      <img src="https://example.com/baseball.jpg" alt="Béisbol" />
+      <p>Béisbol</p>
+    </div>
+  </section>
+
+  <div class="counter">
+    <p>Deportes vistos: <span id="viewed-count">0</span></p>
+    <button id="reset-button">Reiniciar contador</button>
+  </div>
+
+  <script>
+    // JavaScript
+    let viewedCount = 0;
+    const viewedCountDisplay = document.getElementById('viewed-count');
+    const imageCards = document.querySelectorAll('.image-card');
+    const resetButton = document.getElementById('reset-button');
+
+    // Función para incrementar el contador de deportes vistos
+    function incrementCounter() {
+      viewedCount++;
+      viewedCountDisplay.textContent = viewedCount;
+    }
+
+    // Función para reiniciar el contador
+    function resetCounter() {
+      viewedCount = 0;
+      viewedCountDisplay.textContent = viewedCount;
+    }
+
+    // Añadir evento de clic a cada imagen
+    imageCards.forEach(card => {
+      card.addEventListener('click', incrementCounter);
+    });
+
+    // Evento para reiniciar el contador
+    resetButton.addEventListener('click', resetCounter);
+  </script>
+</body>
+</html>
